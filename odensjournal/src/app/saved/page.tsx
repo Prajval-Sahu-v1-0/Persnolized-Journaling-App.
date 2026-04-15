@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const MONTHS = [
   "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE",
@@ -17,6 +18,7 @@ interface Entry {
 export default function SavedPage() {
   const [entries, setEntries] = useState<Entry[]>([]);
   const [year, setYear] = useState(new Date().getFullYear());
+  const router = useRouter();
 
   useEffect(() => {
     fetch("/api/entries")
@@ -25,13 +27,17 @@ export default function SavedPage() {
       .catch(console.error);
   }, []);
 
-  // Set of strings in "YYYY-M-D" format
-  const entryDates = new Set(
-    entries.map((e) => {
-      const d = new Date(e.created_at);
-      return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
-    })
-  );
+  // Map of "YYYY-MM-DD" string to entry id
+  const entryMap = new Map<string, string>();
+  entries.forEach((e) => {
+    const d = new Date(e.created_at);
+    const mStr = String(d.getMonth() + 1).padStart(2, '0');
+    const dStr = String(d.getDate()).padStart(2, '0');
+    const dateStr = `${d.getFullYear()}-${mStr}-${dStr}`;
+    if (!entryMap.has(dateStr)) {
+      entryMap.set(dateStr, e.id);
+    }
+  });
 
   return (
     <div className="flex flex-col gap-8 pb-12 w-full max-w-6xl mx-auto mt-4">
@@ -47,7 +53,21 @@ export default function SavedPage() {
         </div>
       </div>
       
-      <div className="flex justify-end border-b border-[var(--t-border)] pb-2 mb-4">
+      <div className="flex justify-between items-end border-b border-[var(--t-border)] pb-2 mb-4">
+        <div className="flex gap-4 mb-1">
+          <button 
+            className="text-[var(--t-dim)] hover:text-[var(--az-light)] hover:bg-[rgba(145,186,214,0.1)] px-3 py-1 rounded transition-colors border border-[var(--t-border)]"
+            onClick={() => setYear(y => y - 1)}
+          >
+            ← Prev Year
+          </button>
+          <button 
+            className="text-[var(--t-dim)] hover:text-[var(--az-light)] hover:bg-[rgba(145,186,214,0.1)] px-3 py-1 rounded transition-colors border border-[var(--t-border)]"
+            onClick={() => setYear(y => y + 1)}
+          >
+            Next Year →
+          </button>
+        </div>
         <h1 className="text-3xl font-bold tracking-widest" style={{ color: "var(--az-light)" }}>
           {year}
         </h1>
@@ -60,7 +80,8 @@ export default function SavedPage() {
             year={year}
             month={index}
             monthName={month}
-            entryDates={entryDates}
+            entryMap={entryMap}
+            router={router}
           />
         ))}
       </div>
@@ -72,12 +93,14 @@ function MonthCalendar({
   year,
   month,
   monthName,
-  entryDates,
+  entryMap,
+  router,
 }: {
   year: number;
   month: number;
   monthName: string;
-  entryDates: Set<string>;
+  entryMap: Map<string, string>;
+  router: any;
 }) {
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -101,10 +124,12 @@ function MonthCalendar({
           <div key={`blank-${b}`} className="w-7 h-7" />
         ))}
         {days.map((d) => {
-          const dateStr = `${year}-${month + 1}-${d}`;
-          const hasEntry = entryDates.has(dateStr);
+          const mStr = String(month + 1).padStart(2, '0');
+          const dStr = String(d).padStart(2, '0');
+          const dateStr = `${year}-${mStr}-${dStr}`;
+          const entryId = entryMap.get(dateStr);
           
-          if (hasEntry) {
+          if (entryId) {
              return (
                <div
                  key={d}
@@ -116,7 +141,7 @@ function MonthCalendar({
                  }}
                  title="Journal entry saved"
                  onClick={() => {
-                   // Optional: implement clicking to see entries for a specific day
+                   router.push(`/?id=${entryId}`);
                  }}
                >
                  {d}
@@ -126,7 +151,7 @@ function MonthCalendar({
              return (
                <div
                  key={d}
-                 className="flex justify-center items-center w-7 h-7 mx-auto rounded-[3px] transition-colors"
+                 className="flex justify-center items-center w-7 h-7 mx-auto rounded-[3px] transition-colors cursor-pointer"
                  style={{ color: "var(--t-dim)" }}
                  onMouseEnter={(e) => {
                    e.currentTarget.style.color = "var(--az-lightest)";
@@ -135,6 +160,9 @@ function MonthCalendar({
                  onMouseLeave={(e) => {
                    e.currentTarget.style.color = "var(--t-dim)";
                    e.currentTarget.style.backgroundColor = "transparent";
+                 }}
+                 onClick={() => {
+                   router.push(`/?date=${dateStr}`);
                  }}
                >
                  {d}

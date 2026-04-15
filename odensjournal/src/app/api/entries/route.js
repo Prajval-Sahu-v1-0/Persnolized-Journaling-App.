@@ -9,7 +9,7 @@ export async function GET() {
 }
 
 export async function POST(req) {
-    const { content } = await req.json();
+    const { content, createdAt } = await req.json();
 
     if (!content || typeof content !== "string") {
         return Response.json({ error: "content is required" }, { status: 400 });
@@ -18,7 +18,7 @@ export async function POST(req) {
     const entry = {
         id: uuid(),
         content,
-        created_at: Date.now(),
+        created_at: createdAt ? parseInt(createdAt, 10) : Date.now(),
         updated_at: Date.now(),
     };
 

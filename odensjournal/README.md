@@ -1,8 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Oden's Journal
+
+A terminal-themed digital journal application built with Next.js and Tailwind CSS. The interface features a unique "Gentle Azul" aesthetic with custom fonts, colors, and a clean command-line-style experience for writing and saving your daily entries.
+
+## Features
+
+- **Terminal Interface:** Immersive command-line aesthetic for a distraction-free writing experience.
+- **Gentle Azul Theme:** A soothing color palette tailored for focused journaling.
+- **Save Entries:** Locally save and persist your daily thoughts via a built-in SQLite database.
+- **View Past Entries:** Dedicated interface to read back your previously saved journal entries.
+- **Responsive Design:** Polished layout utilizing Tailwind CSS.
+
+## Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Styling:** Tailwind CSS
+- **Database:** SQLite (built-in, automatically initialized)
+- **Language:** TypeScript/JavaScript
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+Ensure you have Node.js installed on your machine.
+
+### Installation
+
+1. Clone this repository to your local machine.
+2. Install the necessary dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+### Running the Application
+
+To start the development server:
 
 ```bash
 npm run dev
@@ -14,23 +50,19 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to start journaling.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How to Use
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Navigate to the main page to see the terminal-styled prompt.
+2. Type your journal entry directly into the multi-line input area.
+3. Click the `[SAVE]` button or use the equivalent action to store your entry.
+4. Navigate to the Saved Entries page (e.g., `/saved`) to view your historic records.
 
-## Learn More
+## Customization
 
-To learn more about Next.js, take a look at the following resources:
+The project uses a custom Tailwind setup to maintain the "Gentle Azul" aesthetic. You can modify the global styles, colors, and typography within `tailwind.config.ts` or the main CSS file.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
+*Built as a dedicated space for quiet reflection.*
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
