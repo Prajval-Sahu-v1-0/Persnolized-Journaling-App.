@@ -1,0 +1,487 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0d1a2d;
+  --foreground: #BCD2E8;
+
+  /* ── Azul palette ─────────────────────────── */
+  --az-lightest: #BCD2E8;
+  /* Gentle Azul   */
+  --az-light: #91BAD6;
+  /* Floral Blue   */
+  --az-mid: #73A5C6;
+  /* Second Blue   */
+  --az-accent: #528AAE;
+  /* Aviation      */
+  --az-dark: #2E5984;
+  /* Flat Dark     */
+  --az-darkest: #1E3F66;
+  /* Catalina Blue */
+
+  /* ── Semantic mappings ────────────────────── */
+  --t-primary: var(--az-light);
+  --t-accent: var(--az-accent);
+  --t-highlight: var(--az-lightest);
+  --t-label: var(--az-mid);
+  --t-dim: var(--az-dark);
+  --t-muted: #3a5a7c;
+  --t-white: var(--az-lightest);
+  --t-surface: rgba(14, 26, 45, 0.75);
+  --t-border: rgba(145, 186, 214, 0.1);
+  --t-glow: rgba(145, 186, 214, 0.12);
+
+  /* ── Extra accents ────────────────────────── */
+  --t-green: #7ec89b;
+  --t-red: #e08080;
+  --t-yellow: #d4b876;
+  --t-magenta: #b08cc5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ── Reset & Base ─────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-share-tech-mono), "Share Tech Mono", monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+/* ── Background ───────────────────────────────────── */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: url("/dark_souls.gif") center / cover no-repeat;
+  filter: brightness(0.3) saturate(0.5);
+}
+
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg,
+      rgba(14, 26, 45, 0.5) 0%,
+      rgba(14, 26, 45, 0.25) 50%,
+      rgba(14, 26, 45, 0.6) 100%);
+}
+
+/* ── App Shell ────────────────────────────────────── */
+.app-shell {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ── Navbar (Tab bar) ─────────────────────────────── */
+.navbar {
+  display: flex;
+  align-items: stretch;
+  height: 32px;
+  background: rgba(20, 36, 58, 0.88);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--t-border);
+  flex-shrink: 0;
+}
+
+.nav-tabs {
+  display: flex;
+  align-items: stretch;
+}
+
+.nav-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 16px;
+  font-size: 12px;
+  color: var(--t-dim);
+  text-decoration: none;
+  border-right: 1px solid var(--t-border);
+  transition: color 0.15s, background 0.15s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.nav-tab:hover {
+  color: var(--t-white);
+  background: rgba(145, 186, 214, 0.06);
+}
+
+.nav-tab.active {
+  color: var(--t-white);
+  background: rgba(145, 186, 214, 0.1);
+}
+
+.nav-tab .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--t-dim);
+  transition: background 0.15s;
+}
+
+.nav-tab.active .dot {
+  background: var(--az-light);
+  box-shadow: 0 0 6px var(--t-glow);
+}
+
+.nav-spacer {
+  flex: 1;
+}
+
+.nav-title {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  font-size: 11px;
+  color: var(--t-dim);
+  letter-spacing: 0.04em;
+}
+
+/* ── Terminal Body ────────────────────────────────── */
+.terminal-viewport {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-viewport::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal-viewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminal-viewport::-webkit-scrollbar-thumb {
+  background: rgba(145, 186, 214, 0.12);
+  border-radius: 3px;
+}
+
+/* ── Neofetch Layout ──────────────────────────────── */
+.neofetch {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 28px;
+  align-items: flex-start;
+}
+
+.logo-image {
+  flex-shrink: 0;
+  width: 170px;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--t-border);
+  box-shadow: 0 0 20px rgba(145, 186, 214, 0.08);
+  object-fit: cover;
+}
+
+.sys-info {
+  min-width: 0;
+}
+
+.sys-info .title-line {
+  color: var(--az-light);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.sys-info .separator {
+  color: var(--t-dim);
+  margin-bottom: 6px;
+}
+
+.info-row {
+  display: flex;
+  gap: 0;
+  line-height: 1.65;
+}
+
+.info-label {
+  color: var(--az-mid);
+  font-weight: 600;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.info-value {
+  color: var(--az-lightest);
+}
+
+.color-blocks {
+  display: flex;
+  gap: 2px;
+  margin-top: 10px;
+}
+
+.color-block {
+  width: 24px;
+  height: 12px;
+  border-radius: 1px;
+}
+
+/* ── Divider ──────────────────────────────────────── */
+.term-divider {
+  border: none;
+  border-top: 1px solid var(--t-border);
+  margin: 20px 0;
+}
+
+/* ── Output Lines ─────────────────────────────────── */
+.output-line {
+  line-height: 1.65;
+  color: var(--az-dark);
+}
+
+.output-line .cmd {
+  color: var(--az-accent);
+}
+
+.output-line .comment {
+  color: var(--t-muted);
+  font-style: italic;
+}
+
+/* ── Input Prompt ─────────────────────────────────── */
+.prompt-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 8px;
+}
+
+.prompt-user {
+  color: var(--az-light);
+  font-weight: 700;
+}
+
+.prompt-at {
+  color: var(--t-dim);
+}
+
+.prompt-host {
+  color: var(--t-magenta);
+  font-weight: 700;
+}
+
+.prompt-path {
+  color: var(--az-accent);
+  margin-left: 4px;
+}
+
+.prompt-git {
+  color: var(--t-red);
+  margin-left: 4px;
+}
+
+.prompt-arrow {
+  color: var(--az-light);
+  font-weight: 700;
+  margin: 0 6px 0 0;
+  text-shadow: 0 0 4px var(--t-glow);
+}
+
+/* ── Textarea ─────────────────────────────────────── */
+.terminal-textarea-wrapper {
+  margin-top: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.terminal-textarea {
+  width: 100%;
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--az-lightest);
+  caret-color: var(--az-light);
+  resize: vertical;
+  letter-spacing: 0.01em;
+}
+
+.terminal-textarea::placeholder {
+  color: var(--t-muted);
+  font-style: italic;
+}
+
+/* ── Buttons ──────────────────────────────────────── */
+.btn-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.close-btn {
+  padding: 6px 18px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--t-dim);
+  background: transparent;
+  border: 1px solid var(--t-dim);
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: all 0.15s;
+}
+
+.close-btn:hover:not(:disabled) {
+  color: var(--t-red);
+  border-color: var(--t-red);
+  background: rgba(224, 128, 128, 0.1);
+}
+
+.close-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.save-btn {
+  padding: 6px 18px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--az-lightest);
+  background: var(--az-dark);
+  border: 1px solid var(--az-accent);
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+}
+
+.save-btn:hover:not(:disabled) {
+  background: var(--az-accent);
+  border-color: var(--az-light);
+}
+
+.save-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ── Status Bar ───────────────────────────────────── */
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 24px;
+  padding: 0 12px;
+  background: rgba(30, 63, 102, 0.65);
+  backdrop-filter: blur(6px);
+  font-size: 11px;
+  color: var(--az-lightest);
+  flex-shrink: 0;
+}
+
+.status-left,
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.85;
+}
+
+.status-item .icon {
+  font-size: 12px;
+}
+
+.status-accent {
+  padding: 0 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background: rgba(46, 89, 132, 0.8);
+  margin-left: -12px;
+  font-weight: 600;
+}
+
+/* ── Scanlines ────────────────────────────────────── */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.012) 2px,
+      rgba(0, 0, 0, 0.012) 4px);
+}
+
+/* ── Cursor blink ─────────────────────────────────── */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  background: var(--az-light);
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+  margin-left: 1px;
+}
+
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 720px) {
+  .neofetch {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .logo-image {
+    width: 120px;
+  }
+
+  .terminal-viewport {
+    padding: 16px;
+  }
+
+  .status-bar {
+    font-size: 10px;
+  }
+}
