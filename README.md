@@ -1,32 +1,87 @@
-# Oden's Journal
+```md
+# 🟦 Oden’s Journal ░▒▓
 
-A terminal-themed digital journal application built with Next.js and Tailwind CSS. The interface features a unique "Gentle Azul" aesthetic with custom fonts, colors, and a clean command-line-style experience for writing and saving your daily entries.
+```
 
-## Features
+🌙  night-mode: ON
+🔥  warmth: low
+🧠  noise: muted
 
-- **Terminal Interface:** Immersive command-line aesthetic for a distraction-free writing experience.
-- **Gentle Azul Theme:** A soothing color palette tailored for focused journaling.
-- **Save Entries:** Locally save and persist your daily thoughts via a built-in SQLite database.
-- **View Past Entries:** Dedicated interface to read back your previously saved journal entries.
-- **Responsive Design:** Polished layout utilizing Tailwind CSS.
+```
 
-## Tech Stack
+> *a quiet terminal glow in a frozen city...  
+> words flicker like pixels in the dark*
 
-- **Framework:** Next.js (App Router)
-- **Styling:** Tailwind CSS
-- **Database:** SQLite (built-in, automatically initialized)
-- **Language:** TypeScript/JavaScript
+---
 
-## Getting Started
+## ░▒▓ about
 
-### Prerequisites
+this isn’t oden’s logbook.  
+just borrowed the name.
 
-Ensure you have Node.js installed on your machine.
+this is a **local-first journal**, built to keep thoughts off the grid.  
+no cloud. no sync. no watchers.
 
-### Installation
+```
 
-1. Clone this repository to your local machine.
-2. Install the necessary dependencies:
+[you] ──writes──▶ [local db]
+
+```
+
+that’s it.
+
+---
+
+## ░▒▓ features
+
+```
+
+▣ terminal-ui
+
+> type. save. no distractions.
+
+▣ azul-theme
+
+> soft blue glow, late-night coding energy
+
+▣ local-storage
+
+> sqlite-backed, no external calls
+
+▣ memory-view
+
+> revisit old logs like save files
+
+▣ responsive
+
+> tailwind-powered layout, clean + sharp
+
+```
+
+---
+
+## ░▒▓ setup
+
+```
+
+OS: linux (apt-based preferred)
+DB: mysql-style queries
+
+````
+
+diagram reference:
+
+![ER Diagram](https://github.com/user-attachments/assets/90eb1d4e-0391-435d-ba79-323a24046a49)
+
+initialize db:
+
+```bash
+scripts/create.sh
+````
+
+---
+
+## ░▒▓ install
 
 ```bash
 npm install
@@ -36,9 +91,9 @@ yarn install
 pnpm install
 ```
 
-### Running the Application
+---
 
-To start the development server:
+## ░▒▓ run
 
 ```bash
 npm run dev
@@ -50,19 +105,47 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to start journaling.
-
-## How to Use
-
-1. Navigate to the main page to see the terminal-styled prompt.
-2. Type your journal entry directly into the multi-line input area.
-3. Click the `[SAVE]` button or use the equivalent action to store your entry.
-4. Navigate to the Saved Entries page (e.g., `/saved`) to view your historic records.
-
-## Customization
-
-The project uses a custom Tailwind setup to maintain the "Gentle Azul" aesthetic. You can modify the global styles, colors, and typography within `tailwind.config.ts` or the main CSS file.
+```
+open: http://localhost:3000
+```
 
 ---
-*Built as a dedicated space for quiet reflection.*
 
+## ░▒▓ usage
+
+```
+> open interface
+> write entry
+> [SAVE]
+> /saved → browse logs
+```
+
+no autosave.
+no background magic.
+every action = intentional.
+
+---
+
+## ░▒▓ customize
+
+```
+tailwind.config.ts
+global styles
+```
+
+tweak colors, fonts, spacing —
+keep it minimal. keep it dim.
+
+---
+
+## ░▒▓ mood
+
+```
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+   one window lit in a sleeping city.
+   keyboard clicks echo.
+   thoughts compile slowly.
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+```
