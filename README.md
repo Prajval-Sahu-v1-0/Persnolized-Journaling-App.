@@ -71,9 +71,10 @@ DB: mysql-style queries
 
 the reference ER diagram:
 
-<img width="3552" height="1214" alt="Gemini_Generated_Image_j6gxeuj6gxeuj6gx" src="https://github.com/user-attachments/assets/4eb5164f-bcbb-4415-bc47-28d72915f346" />
+````
+<img width="3552" height="1214" alt="Gemini_Generated_Image_j6gxeuj6gxeuj6gx" src="https://github.com/user-attachments/assets/64d9c158-7635-41f5-94bf-9834da5b573c" />
 
-
+````
 initialize your database locally:
 
 ```bash
