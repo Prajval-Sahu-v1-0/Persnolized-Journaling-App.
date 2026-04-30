@@ -71,7 +71,8 @@ DB: mysql-style queries
 
 the reference ER diagram:
 
-![ER Diagram](https://github.com/user-attachments/assets/90eb1d4e-0391-435d-ba79-323a24046a49)
+<img width="3552" height="1214" alt="Gemini_Generated_Image_j6gxeuj6gxeuj6gx" src="https://github.com/user-attachments/assets/4eb5164f-bcbb-4415-bc47-28d72915f346" />
+
 
 initialize your database locally:
 
