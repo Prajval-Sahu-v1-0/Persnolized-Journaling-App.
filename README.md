@@ -9,8 +9,8 @@
 
 ```
 
-> *a quiet terminal glow in a frozen city...  
-> words flicker like pixels in the dark*
+> *a quiet terminal glow in a frozen city…*  
+> *words flicker like pixels in the dark*
 
 ---
 
@@ -20,7 +20,7 @@ this isn’t oden’s logbook.
 just borrowed the name.
 
 this is a **local-first journal**, built to keep thoughts off the grid.  
-no cloud. no sync. no watchers.
+no cloud. no sync. no observers.
 
 ```
 
@@ -28,7 +28,7 @@ no cloud. no sync. no watchers.
 
 ```
 
-that’s it.
+that’s the entire system.
 
 ---
 
@@ -38,29 +38,29 @@ that’s it.
 
 ▣ terminal-ui
 
-> type. save. no distractions.
+> immersive, distraction-free writing
 
-▣ azul-theme
+▣ gentle azul theme
 
-> soft blue glow, late-night coding energy
+> muted blues, low-light comfort, night-coded feel
 
-▣ local-storage
+▣ local storage
 
-> sqlite-backed, no external calls
+> sqlite-backed persistence
 
-▣ memory-view
+▣ memory recall
 
-> revisit old logs like save files
+> revisit previous entries like save states
 
-▣ responsive
+▣ responsive layout
 
-> tailwind-powered layout, clean + sharp
+> tailwind css, clean and adaptive
 
 ```
 
 ---
 
-## ░▒▓ setup
+## ░▒▓ system setup
 
 ```
 
@@ -69,11 +69,11 @@ DB: mysql-style queries
 
 ````
 
-diagram reference:
+the reference ER diagram:
 
 ![ER Diagram](https://github.com/user-attachments/assets/90eb1d4e-0391-435d-ba79-323a24046a49)
 
-initialize db:
+initialize your database locally:
 
 ```bash
 scripts/create.sh
@@ -81,7 +81,13 @@ scripts/create.sh
 
 ---
 
-## ░▒▓ install
+## ░▒▓ prerequisites
+
+* node.js installed
+
+---
+
+## ░▒▓ installation
 
 ```bash
 npm install
@@ -106,7 +112,7 @@ bun dev
 ```
 
 ```
-open: http://localhost:3000
+open → http://localhost:3000
 ```
 
 ---
@@ -116,25 +122,25 @@ open: http://localhost:3000
 ```
 > open interface
 > write entry
-> [SAVE]
-> /saved → browse logs
+> press [SAVE]
+> navigate to /saved
 ```
 
-no autosave.
-no background magic.
-every action = intentional.
+no autosave
+no hidden processes
+every action is deliberate
 
 ---
 
-## ░▒▓ customize
+## ░▒▓ customization
 
 ```
 tailwind.config.ts
-global styles
+global css
 ```
 
-tweak colors, fonts, spacing —
-keep it minimal. keep it dim.
+adjust colors, typography, spacing
+maintain minimalism — the design depends on silence
 
 ---
 
@@ -143,9 +149,19 @@ keep it minimal. keep it dim.
 ```
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
-   one window lit in a sleeping city.
-   keyboard clicks echo.
-   thoughts compile slowly.
+   one window lit in a sleeping city
+   keys clicking in steady rhythm
+   thoughts compiling, slowly
 
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+```
+
+---
+
+## ░▒▓ note
+
+> *offline words carry weight*
+> *what stays local, stays yours*
+
+```
 ```
