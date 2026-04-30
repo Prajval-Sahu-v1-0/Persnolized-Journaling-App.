@@ -78,7 +78,7 @@ the reference ER diagram:
 initialize your database locally:
 
 ```bash
-scripts/create.sh
+create.sql
 ````
 
 ---
